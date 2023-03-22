@@ -28,7 +28,8 @@ function ubicacionesEnCirculo(numero_ubicaciones){
   //   valor(es) inicial(es),
   //   condición de seguir iterando,
   //   cambios de cada iteración
-  for (i=0; i<numero_ubicaciones; i++){
+  // En python: for i in range(0,numero_ubicaciones):
+  for (let i=0; i<numero_ubicaciones; i++){
     // Agregamos la ubicación deseada al arreglo (Array).
     // Notar que 2pi es una vuelta completa,
     // asi que hacemos la primera división para encontrar
@@ -53,8 +54,6 @@ function ubicacionesEnCirculo(numero_ubicaciones){
 ubicacionesEnCirculo(4)
 
 
-
-
 // Seleccionamos el SVG
 svg = d3.select("#svg-ejemplo")
 
@@ -74,17 +73,17 @@ function crearEstrella(x, y){
         //notar que el color se definió con el nombre del color
     // Podemos agregar texto que aparezca cuando hacemos hover sobre el círculo
     .append("title")
-    .text("texto de prueba")
+    .text("texto de prueba nuevo")
 
 
   // como rectángulo:
-  //*
-  // svg.append("rect")
-  //   .attr("x", x)
-  //   .attr("y", y)
-  //   .attr("height", radio_estrella)
-  //   .attr("width", radio_estrella)
-  //   .style("fill", "red")
+  /*
+  svg.append("rect")
+    .attr("x", x)
+    .attr("y", y)
+    .attr("height", radio_estrella)
+    .attr("width", radio_estrella)
+    .style("fill", "red")
 
   //*/
 }
