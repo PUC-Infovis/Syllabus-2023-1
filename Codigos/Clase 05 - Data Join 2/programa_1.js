@@ -1,4 +1,4 @@
-// Encontrar el body en el HTML y agregar un elemento SVG
+// Encontrar el SVG según su ID
 const SVG = d3.select("#vis");
 
 function datajoin(datos) {
