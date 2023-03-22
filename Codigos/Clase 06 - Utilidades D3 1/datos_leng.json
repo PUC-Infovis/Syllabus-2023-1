@@ -1,0 +1,30 @@
+[
+  {
+    "categoria": "Azul",
+    "frecuencia": 29
+  },
+  {
+    "categoria": "Rojo",
+    "frecuencia": 104
+  },
+  {
+    "categoria": "Amarillo",
+    "frecuencia": 26
+  },
+  {
+    "categoria": "Verde",
+    "frecuencia": 9
+  },
+  {
+    "categoria": "Naranjo",
+    "frecuencia": 3
+  },
+  {
+    "categoria": "Morado",
+    "frecuencia": 2
+  },
+  {
+    "categoria": "Ninguno",
+    "frecuencia": 2
+  }
+]

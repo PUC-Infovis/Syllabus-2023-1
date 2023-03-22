@@ -1,4 +1,4 @@
-// Seleccionar el svg cuya id es vis
+// Encontrar el SVG según su ID
 const SVG = d3.select("#vis");
 
 // Agregar 3 textos al SVG
