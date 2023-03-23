@@ -18,13 +18,13 @@ function joinDeDatos(datos) {
     .attr("x", (_, i) => 50 + i * 100);
 
   /*  BONUS
-  Casi siempre trabajos con una lista de obejtos
+  Casi siempre trabajos con una lista de objetos
   ¿ Si queremos tranformarla en un diccionario para 
   buscar algún objeto según su identificador ?
   */
+ let diccionario = Object.fromEntries(datos.map(x => [x.categoria, x]));
   // [x.categoria, x] --> primer elemento será la llave del diccionario
   // Segundo elemento será lo que guardemos como valor en el diccionario
-  let diccionario = Object.fromEntries(datos.map(x => [x.categoria, x]));
 
   /*  
   Con la línea anterior, tendremos un diccionario de la forma
@@ -51,12 +51,12 @@ const parseo = (d) => ({
 });
 
 
-// Esta función es equivalente a la anteior
+// Esta función es equivalente a la anterior
 function parseoV2(d) {
 
   return {
     categoria: d.categoria,
-    frecuencia: parseInt(d.frecuencia),
+    frecuencia: parseInt(d.frecuencia)
   }
 }
 
@@ -66,7 +66,8 @@ function runCode(option) {
     // Opción 1: Cargamos el CSV y le indicamos que ocupe la función
     // parseo para procesar cada línea.
     // No olviden hacer python3 -m http.server para que esta opción funcione.
-    d3.csv("datos_mate.csv", parseo)
+    // O levantar un servidor con live-server en VSCode
+    d3.csv("datos_mate.csv", parseoV2)
       .then((datos) => {
         // Usamos .then para acceder a los datos ya cargados
         // y actualizamos el svg.
@@ -80,6 +81,7 @@ function runCode(option) {
     // opción 2: Cargamos el json y aquí ya vienen los datos con 
     // el formato deseado, así que no necesitamos la función parseo.
     // No olviden hacer python3 -m http.server para que esta opción funcione.
+    // O levantar un servidor con live-server en VSCode
     d3.json("datos_leng.json")
       .then((datos) => {
         console.log(datos);
@@ -124,3 +126,21 @@ function runCode(option) {
 
 const OPTION = 1;
 runCode(OPTION);
+
+
+
+/* 
+Cómo cargar 2 datasets "al mismo tiempo"
+d3.json(URL_FINAL)
+  .then((datos) => {
+    // Tenemos el primer dataset cargado con el nombre "datos"
+    d3.json(URL_FINAL)
+      .then((datos2) => {
+        // Tenemos el segundo dataset cargados con el nombbre "datos2"
+        console.log(datos, datos2);
+        joinDeDatos(datos);
+      })
+      .catch((error) => console.log(error));
+  })
+  .catch((error) => console.log(error)); 
+  */

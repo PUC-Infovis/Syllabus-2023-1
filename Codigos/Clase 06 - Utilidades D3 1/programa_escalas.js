@@ -34,11 +34,13 @@ function joinDeDatos(datos) {
   // Esta escala genera una banda por cada cateoría. 
   // Esta escala determinará la posición y ancho de cada banda en función del dominio y rango.
   // Mapea cada categoría a una banda específica.
+  const categorias = datos.map((d) => d.categoria)
+  
   const escalaX = d3
     .scaleBand()
-    .domain(datos.map((d) => d.categoria))
+    .domain(categorias) // Le doy la lista de categorías
     .rangeRound([0, WIDTH])
-    .padding(0.5); // agregar sepación entre el final y el inicio de una banda.
+    .padding(0.3); // agregar sepación entre el final y el inicio de una banda.
 
   // Vinculamos los datos con cada elemento rect con el comando data y join.
   // Personalizamos según la información de los datos.

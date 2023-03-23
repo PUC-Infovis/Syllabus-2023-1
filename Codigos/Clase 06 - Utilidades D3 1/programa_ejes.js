@@ -3,9 +3,9 @@ const WIDTH = 800;
 const HEIGHT = 400;
 const MARGIN = {
   top: 70,
-  bottom: 70,
-  right: 30,
-  left: 30,
+  bottom: 30,
+  right: 10,
+  left: 50,
 };
 
 const HEIGHTVIS = HEIGHT - MARGIN.top - MARGIN.bottom;
@@ -16,6 +16,7 @@ const SVG = d3.select("body")
   .append("svg")
   .attr("width", WIDTH)
   .attr("height", HEIGHT)
+  .style("border", "1px solid black") // Estilo adicional para ver el borde del SVG
 
 // Creamos un contenedor específico para agregar la visualización.
 // El resto del espacio lo usaremos para incluir los ejes.
@@ -71,7 +72,7 @@ function joinDeDatos(datos) {
     .scaleBand()
     .domain(datos.map((d) => d.categoria))
     .rangeRound([0, WIDTHVIS])
-    .padding(0.5);
+    .padding(0.1); // Un poco de espacio entre las barras
 
   // Creamos un eje inferior con D3 y le damos nuestra escala línea
   // para que sepa qué valores incluir en el eje.
@@ -104,6 +105,7 @@ function joinDeDatos(datos) {
   // bonus ¿Las líneas se ven sobre los rects? ¿cómo lo soluciono?
   // Usar .raise(). En clases lo veremos y de ahí actualizaré
   // el código.
+  contenedor.raise()
 }
 
 ////////////////////////////////////////////
