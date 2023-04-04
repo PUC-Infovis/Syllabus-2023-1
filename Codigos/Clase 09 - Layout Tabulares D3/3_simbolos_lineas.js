@@ -9,7 +9,7 @@ const svgEj1 = d3
 
 // Dibujar símbolo por defecto
 const simbolo = d3.symbol().size(30 * 30);
-console.log(simbolo());
+console.log("defecto: ", simbolo());
 svgEj1
   .append("path")
   .attr("d", simbolo())
@@ -17,7 +17,7 @@ svgEj1
 
 // Cambiar el tipo a una cruz
 simbolo.type(d3.symbolCross);
-console.log(simbolo());
+console.log("cruz: ", simbolo());
 svgEj1
   .append("path")
   .attr("d", simbolo())
@@ -25,7 +25,7 @@ svgEj1
 
 // Cambiar el tipo a una estrella
 simbolo.type(d3.symbolStar);
-console.log(simbolo());
+console.log("star: ", simbolo());
 svgEj1
   .append("path")
   .attr("d", simbolo())
@@ -33,7 +33,7 @@ svgEj1
 
 // Cambiar el tipo a un cuadrado
 simbolo.type(d3.symbolSquare);
-console.log(simbolo());
+console.log("Cuadrado: ", simbolo());
 svgEj1
   .append("path")
   .attr("d", simbolo())
@@ -67,7 +67,7 @@ const puntos = [
 ];
 
 const linea = d3.line();
-console.log(linea(puntos));
+console.log("Linea recta: ", linea(puntos));
 svgEj2
   .append("path")
   .attr("fill", "transparent")
@@ -76,7 +76,7 @@ svgEj2
 
 // d3.curveBasis
 linea.curve(d3.curveBasis);
-console.log(linea(puntos));
+console.log("Linea curva: ", linea(puntos));
 svgEj2
   .append("path")
   .attr("fill", "transparent")
@@ -85,7 +85,7 @@ svgEj2
 
 // // d3.curveCardinal
 linea.curve(d3.curveCardinal);
-console.log(linea(puntos));
+console.log("Linea Cardinal: ", linea(puntos));
 svgEj2
   .append("path")
   .attr("fill", "transparent")
@@ -143,7 +143,7 @@ const escalaX = d3
 
 const escalaY = d3
   .scaleLinear()
-  .domain(d3.extent(datos, (d) => d.valor))
+  .domain([0, d3.max(datos, (d) => d.valor)])
   .range([height - 10, 10]);
 
 const lineConEscalas = d3

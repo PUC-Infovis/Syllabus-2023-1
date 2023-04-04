@@ -10,7 +10,7 @@ const svgEj1 = d3
 // Escala lineal
 const escalaLinealDecimal = d3
   .scaleLinear()
-  .domain([1, 10 ** 6])   // Dominio de 0 a 1 millon
+  .domain([1, 10 ** 6])   // Dominio de 1 a 1 millon
   .range([0, 800]);       // Rango de 0 a 800 pixeles
 
 // Definimos un eje inferior con dicha escala
@@ -22,7 +22,7 @@ svgEj1.append("g").attr("transform", `translate(100, 0)`).call(ejeLinealDecimal)
 // Escala logaritico
 const escalaLogaritmicaDecimal = d3
   .scaleLog()
-  .domain([1, 10 ** 6])   // Dominio de 0 a 1 millon
+  .domain([1, 10 ** 6])   // Dominio de 1 a 1 millon. El domonio no puede ser 0
   .range([0, 800]);       // Rango de 0 a 800 pixeles
 
 // Definimos un eje inferior con dicha escala
@@ -34,10 +34,9 @@ svgEj1.append("g").attr("transform", `translate(100, 75)`).call(ejeLogaritmicoDe
 
 // Escala potencia. En este caso potenia 1/2 == raiz cuadrada
 const escalaRaizCuadrada = d3
-  .scalePow()
-  .exponent(0.5)          // Potencia a utilizar en la escala
-  .domain([1, 10 ** 6])   // Dominio de 0 a 1 millon 
-  .range([0, 800]);       // Rango de 0 a 800 pixeles
+  .scalePow().exponent(0.5) // Potencia a utilizar en la escala
+  .domain([1, 10 ** 6])     // Dominio de 0 a 1 millon 
+  .range([0, 800]);         // Rango de 0 a 800 pixeles
 
 // Definimos un eje inferior con dicha escala
 const ejeRaizCuadradaDecimal = d3.axisBottom(escalaRaizCuadrada);
@@ -94,4 +93,7 @@ svg3
   .join("circle")
   .attr("cx", (_, i) => i * 200)
   .attr("cy", 100)
-  .attr("r", escalaRaizParaRadio); // A cada dato le aplico la función de escala
+  .attr("r", d => {
+    console.log(d, escalaRaizParaRadio(d))
+    return escalaRaizParaRadio(d)
+  }); // A cada dato le aplico la función de escala

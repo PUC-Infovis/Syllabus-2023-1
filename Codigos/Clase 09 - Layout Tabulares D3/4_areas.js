@@ -54,7 +54,7 @@ const escalaYEj1 = d3
 const areaEj1 = d3
   .area()
   .curve(d3.curveMonotoneX)
-  .x((d) => escalaXEj1(d.paso))
+  .x((d) => escalaXEj1(d.paso)) // X0 y X1 usen el mismo X
   .y0(HEIGHT - 10)
   // .y0((d) => escalaYEj1(d.valor - 0.5)) // Probar con esta línea en vez de la anterior.
   .y1((d) => escalaYEj1(d.valor));
@@ -71,7 +71,6 @@ svgEj1
 //////               Ejemplo 2             ///////
 //////////////////////////////////////////////////
 function parseData(row) {
-  console.log(row);
   data = JSON.parse(row.data)
 
   return {
@@ -102,12 +101,10 @@ d3.csv(datosEj2URL, parseData).then(datosEj2 => {
     .range([10, WIDTH - 10])
     .padding(1);
 
+  let valorMaximoStack = d3.max(series, (serie) => d3.max(serie, (arreglo) => arreglo[1]))
   const escalaY = d3
     .scaleLinear()
-    .domain([
-      0,
-      d3.max(series, (serie) => d3.max(serie, (arreglo) => arreglo[1])),
-    ])
+    .domain([0, valorMaximoStack])
     .range([HEIGHT - 10, 10]);
 
   const escalaColor = d3
