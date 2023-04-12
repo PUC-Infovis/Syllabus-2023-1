@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Ayudantia 4</title>
+</head>
+<body>
+    <div id="vis1"></div>
+    <div id="vis2">
+        <select id="orden">
+            <option value="ViewsGained">Vistas ganadas</option>
+            <option value="FollowersGained">Seguidores ganados</option>
+        </select>
+        <select id="ascendente">
+            <option value="ascendente">Ascendente</option>
+            <option value="descendente">Descendente</option>
+        </select>
+        <select id="filtro">
+            <option value="default">Default</option>
+            <option value="mature">Canales +18</option>
+            <option value="partnered">Canales no patrocinados</option>
+        </select>
+        <div>
+            <h3>Mandos derecho de color naranjo son canales NO patrocinados.</h3>
+            <h3>Mandos izquierdo de color naranjo son canales > 18.</h3>
+        </div>
+    </div>
+</body>
+<script src="http://d3js.org/d3.v7.min.js" charset="utf-8"></script>
+
+<!-- 
+    Importamos la segunda_vis.js primero para tener la función
+    "crearSegundaVis" disponible cuando ejecutemos el siguiente script
+-->
+<script src="segunda_vis.js"></script>
+
+<!-- 
+    Importamos la primera vez que se encarga de cargar datos
+    y crear la primera visualización. Además de llamar a "crearSegundaVis"
+    cuando se prende un televisor
+-->
+<script src="primera_vis.js"></script>
+</html>
