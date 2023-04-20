@@ -18,13 +18,14 @@ const HEIGHTVIS = HEIGHT - margin.top - margin.bottom
 ////////////////////////////////////////////////////
 const datos = d3
   .range(500)
-  .map(() => (
+  .map((d) => (
     {
+      d: d,
       x: Math.random() * 400 + 20,
       y: Math.random() * 50 + 10
     }));
 
-
+console.log(datos)
 ////////////////////////////////////////////////////
 // Obtener min y max para cada eje (X e Y)
 ////////////////////////////////////////////////////
@@ -109,23 +110,39 @@ const contenedorBrush = SVG
 // Función que detecta el blush y hará lo que nosotros querramos
 const brushed = (evento) => {
   const seleccion = evento.selection;
-
+  if (seleccion == null) { 
+    // Si no hay brush, vuelvo todo a la normalidad
+    puntos
+      .attr("fill", "gray")
+      .attr("r", 2)
+      .attr("opacity", 0.2);
+    return
+  }
   // Seleccion nos dice la posición del cuadro del brush
-  console.log(seleccion)
+  console.log(seleccion) // [Array(2), Array(2)] --> Posición del brush en la vis
 
-  const xMin = escalaX.invert(seleccion[0][0]);
-  const yMax = escalaY.invert(seleccion[0][1]);
+  // Obtengo la posición del brush
+  let esquina_superior_izquierda_x = seleccion[0][0];
+  let esquina_superior_izquierda_y = seleccion[0][1];
+  let esquina_inferior_derecha_x = seleccion[1][0];
+  let esquina_inferior_derecha_y = seleccion[1][1];
 
-  const xMax = escalaX.invert(seleccion[1][0]);
-  const yMin = escalaY.invert(seleccion[1][1]);
+  // Transformo la posición en un número según el dominio de la escala
+  const xMin = escalaX.invert(esquina_superior_izquierda_x);
+  const yMax = escalaY.invert(esquina_superior_izquierda_y);
 
+  const xMax = escalaX.invert(esquina_inferior_derecha_x);
+  const yMin = escalaY.invert(esquina_inferior_derecha_y);
 
+  // Filtro que asegura que el dato esté dentro del brush
   const filtro = (d) =>
     xMin <= d.x && d.x <= xMax && yMin <= d.y && d.y <= yMax;
 
+  // Actualizo los puntos según si están dentro o fuera del brush
   puntos
     .attr("fill", (d) => (filtro(d) ? "orange" : "gray"))
-    .attr("opacity", (d) => (filtro(d) ? 1 : 0.2));
+    .attr("opacity", (d) => (filtro(d) ? 1 : 0.2))
+    // .attr("r", (d) => (filtro(d) ? 10 : 1)); // Extra
 };
 
 // Crear nuestro objeto brush
@@ -136,12 +153,13 @@ const brush = d3.brush()
     [WIDTHVIS, HEIGHTVIS],
   ])
   // Conectar el evento brush con nuestra función
-  .on("brush", brushed);
+  .on("brush", brushed)
+  .on("end", brushed);  // Evento cuando elimino el brush
 
 // Definir posibles filtros para cuando activar el evento brush o no
 brush.filter((event) => {
   console.log(event)
-
+  
   // Detectar si oprimió ctrl
   const ctrlKeyEvent = event.ctrlKey;
 
@@ -157,15 +175,17 @@ brush.filter((event) => {
     button: buttonEvent,
     type: typeEvent,
   });
+
   return (
-    !event.ctrlKey &&
-    !event.button &&
+    !ctrlKeyEvent &&
+    buttonEvent == 0 &&
     typeEvent !== "overlay"
   );
 })
 
 // Llenar nuestro contenedorBrush con los elementos
 // necesarios para que funcione nuestro brush
+// MUY IMPORTANTE!
 contenedorBrush.call(brush)
 
 // Activar el brush de antemano en alguna zona
@@ -174,11 +194,15 @@ contenedorBrush.call(brush.move, [
   [200, 200],
 ]);
 
+// Opcional - Alterar características del brush
 // Aplicar cambios al rect que representa el cuadro de selección
 contenedorBrush.select(".selection").attr("fill", "orange");
 
 // Aplicar cambios al rect que representa toda la zona de brush
-contenedorBrush.select(".overlay").style("cursor", "default");
+contenedorBrush.select(".overlay")
+  .style("cursor", "default")
+  .attr("fill", "gray")
+  .attr("opacity", 0.1);
 
 // Aplicar cambios a los rect de las orillas del cuadro de selección
 // que permiten cambiar su tamaño. en este caso, eliminar esos

@@ -135,9 +135,10 @@ const hexagonos = hexbin(datos);
 console.log(hexagonos);
 
 // 3. Crear escala de color para cada hexbin
+let grupoMasGrande = d3.max(hexagonos, (d) => d.length)
 const escalaColor = d3
-  .scaleSequential(d3.interpolatePuRd)
-  .domain([0, d3.max(hexagonos, (d) => d.length)]);
+  .scaleSequential(d3.interpolateGreens)
+  .domain([0, grupoMasGrande]);
 
 // 4. Agregar los hexágonos a la nueva visualización (al contenedorHex)
 contenedorHex
