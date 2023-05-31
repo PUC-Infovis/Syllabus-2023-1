@@ -1,0 +1,230 @@
+{
+    "nodos": [
+        {
+            "nombre": "A",
+            "color": "red"
+        },
+        {
+            "nombre": "B",
+            "color": "magenta"
+        },
+        {
+            "nombre": "C",
+            "color": "blue"
+        },
+        {
+            "nombre": "D",
+            "color": "orange"
+        },
+        {
+            "nombre": "E",
+            "color": "green"
+        },
+        {
+            "nombre": "F",
+            "color": "RebeccaPurple"
+        },
+        {
+            "nombre": "G",
+            "color": "Turquoise"
+        },
+        {
+            "nombre": "H",
+            "color": "MidnightBlue"
+        },
+        {
+            "nombre": "I",
+            "color": "DeepPink"
+        },
+        {
+            "nombre": "J",
+            "color": "Tomato"
+        },
+        {
+            "nombre": "K",
+            "color": "LightSalmon"
+        },
+        {
+            "nombre": "L",
+            "color": "Coral"
+        },
+        {
+            "nombre": "M",
+            "color": "DimGray"
+        },
+        {
+            "nombre": "N",
+            "color": "Indigo"
+        },
+        {
+            "nombre": "O",
+            "color": "LightGreen"
+        },
+        {
+            "nombre": "P",
+            "color": "MediumSlateBlue"
+        },
+        {
+            "nombre": "Q",
+            "color": "PaleVioletRed"
+        },
+        {
+            "nombre": "R",
+            "color": "OrangeRed"
+        },
+        {
+            "nombre": "S",
+            "color": "Chocolate"
+        },
+        {
+            "nombre": "T",
+            "color": "DarkSlateGray"
+        },
+        {
+            "nombre": "U",
+            "color": "LightSkyBlue"
+        },
+        {
+            "nombre": "V",
+            "color": "Gold"
+        },
+        {
+            "nombre": "W",
+            "color": "Maroon"
+        },
+        {
+            "nombre": "X",
+            "color": "SeaGreen"
+        },
+        {
+            "nombre": "Y",
+            "color": "DarkTurquoise"
+        },
+        {
+            "nombre": "Z",
+            "color": "SandyBrown"
+        }
+    ],
+    "enlaces": [
+        {
+            "source": "A",
+            "target": "B"
+        },
+        {
+            "source": "A",
+            "target": "C"
+        },
+        {
+            "source": "A",
+            "target": "D"
+        },
+        {
+            "source": "A",
+            "target": "E"
+        },
+        {
+            "source": "B",
+            "target": "S"
+        },
+        {
+            "source": "Z",
+            "target": "X"
+        },
+        {
+            "source": "Z",
+            "target": "Y"
+        },
+        {
+            "source": "T",
+            "target": "U"
+        },
+        {
+            "source": "G",
+            "target": "R"
+        },
+        {
+            "source": "U",
+            "target": "R"
+        },
+        {
+            "source": "H",
+            "target": "R"
+        },
+        {
+            "source": "T",
+            "target": "A"
+        },
+        {
+            "source": "A",
+            "target": "R"
+        },
+        {
+            "source": "M",
+            "target": "E"
+        },
+        {
+            "source": "N",
+            "target": "F"
+        },
+        {
+            "source": "O",
+            "target": "P"
+        },
+        {
+            "source": "N",
+            "target": "P"
+        },
+        {
+            "source": "N",
+            "target": "E"
+        },
+        {
+            "source": "C",
+            "target": "Y"
+        },
+        {
+            "source": "D",
+            "target": "K"
+        },
+        {
+            "source": "X",
+            "target": "Y"
+        },
+        {
+            "source": "J",
+            "target": "I"
+        },
+        {
+            "source": "H",
+            "target": "I"
+        },
+        {
+            "source": "J",
+            "target": "K"
+        },
+        {
+            "source": "W",
+            "target": "K"
+        },
+        {
+            "source": "W",
+            "target": "V"
+        },
+        {
+            "source": "Q",
+            "target": "V"
+        },
+        {
+            "source": "Q",
+            "target": "W"
+        },
+        {
+            "source": "L",
+            "target": "W"
+        },
+        {
+            "source": "M",
+            "target": "O"
+        }
+    ]
+}
