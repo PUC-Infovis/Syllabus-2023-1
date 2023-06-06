@@ -1,18 +1,18 @@
-d3.json("jerarquia_anidada.json")
-  .then((datos) => {
-    console.log("jerarquia_anidada")
-    console.log("Datos originales:", datos);
+// d3.json("jerarquia_anidada.json")
+//   .then((datos) => {
+//     console.log("jerarquia_anidada")
+//     console.log("Datos originales:", datos);
 
-    const raiz = d3.hierarchy(datos, (d) => d.hijos);
-    console.log(raiz);
+//     const raiz = d3.hierarchy(datos, (d) => d.hijos);
+//     console.log(raiz);
 
-    console.log("Nodos:", raiz.descendants());
-    console.log("Enlaces:", raiz.links());
-    console.log("Hojas:", raiz.leaves());
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+//     console.log("Nodos:", raiz.descendants());
+//     console.log("Enlaces:", raiz.links());
+//     console.log("Hojas:", raiz.leaves());
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
 
 d3.csv("jerarquia_tabular.csv", d3.autoType)
   .then((datos) => {

@@ -12,7 +12,7 @@ const width = WIDTH - margin.left - margin.right;
 const height = HEIGHT - margin.top - margin.bottom;
 
 
-const dibujarJerarquia = (raiz, contenedor, metodo_jerarquico) => {
+const dibujarJerarquia = (datos, contenedor, metodo_jerarquico) => {
 
   // Por defecto generamos un tree
   let layout = d3.tree()
@@ -21,14 +21,17 @@ const dibujarJerarquia = (raiz, contenedor, metodo_jerarquico) => {
     layout = d3.cluster()
   }
 
+  // IMPORTANTE
   // Actualizamos el tamaño del layout para que posicione los nodos
   // y enlaces en ese rango de valores
   layout.size([width, height]);
 
+
   // Actualizamos los datos con nuestro layout para calcular los x,y de cada
   // nodo y enlace
-  layout(raiz);
+  layout(datos);
 
+  console.log(datos)
   // Cosntruirmos un objeto de D3 encargado de generar path para enlaces
   // así no tenemos que usar "line".
   const generadorDeEnlace = d3
@@ -38,28 +41,30 @@ const dibujarJerarquia = (raiz, contenedor, metodo_jerarquico) => {
     .x((d) => d.x)
     .y((d) => d.y);
 
+
+
   // Agregamos cada path que representa un enlace
   contenedor
     .selectAll("path")
-    .data(raiz.links())
+    .data(datos.links()) // links --> todos los enlaces
     .join("path")
     .attr("d", generadorDeEnlace)
-    .attr("stroke", "gray")
+    .attr("stroke", "magenta")
     .attr("fill", "none");
 
   // Agregamos cada círculo que representa un nodo
   contenedor
     .selectAll("circle")
-    .data(raiz.descendants())
+    .data(datos.descendants()) // descendants --> todos los nodos
     .join("circle")
     .attr("cx", (d) => d.x)
     .attr("cy", (d) => d.y)
-    .attr("r", 3);
+    .attr("r", 5);
 
   // Agregamos un texto para el nombre del nodo
   contenedor
     .selectAll("text")
-    .data(raiz.descendants())
+    .data(datos.descendants()) // descendants --> todos los nodos
     .join("text")
     .attr("x", (d) => d.x)
     .attr("y", (d) => d.y)
@@ -80,7 +85,6 @@ d3.csv("jerarquia_tabular.csv")
 
     // Procesar los datos para la primera vis
     const raiz1 = stratify(datos);
-
     // Crear un SVG para el cluster
     const contenedorCluster = d3
       .select("#cluster-div")
