@@ -1,0 +1,26 @@
+{
+  "nombre": "Abraham y Mona",
+  "hijos": [
+    {
+      "nombre": "Homer y Marge",
+      "hijos": [
+        {
+          "nombre": "Lisa",
+          "hijos": []
+        },
+        {
+          "nombre": "Bart",
+          "hijos": []
+        },
+        {
+          "nombre": "Maggie",
+          "hijos": []
+        }
+      ]
+    },
+    {
+      "nombre": "Herbert",
+      "hijos": []
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+nombre,padre,color
+Abraham y Mona,,gray
+Homer y Marge,Abraham y Mona,yellow
+Bart,Homer y Marge,black
+Lisa,Homer y Marge,8
+Maggie,Homer y Marge,1
+Herbert,Abraham y Mona,100
