@@ -11,21 +11,26 @@ const SVG = d3
 const iniciarSimulacion = (nodos, enlaces) => {
   const FuerzaEnlace = d3.forceLink(enlaces)
     .id((d) => d.nombre) // Llave para conectar source-target con el nodo
-    .strength((link => {
+    .strength(link => {
       // Definir la fuerza del enlace de forma personalizada
-      if (link.source.nombre == "A") {
-        return 0
+      if (link.source.categoria == 2) {
+        return 2;
       }
-      return 0.3
-    }))
+      if (link.target.categoria == 2) {
+        return 2;
+      }
+      
+      return 0.2;
+    })
 
   const simulacion = d3
     .forceSimulation(nodos)
     .force("enlaces", FuerzaEnlace)
-    .force("carga", d3.forceManyBody())
-    .force("colision", d3.forceCollide(10))
-    .force("centro", d3.forceCenter(WIDTH / 2, HEIGHT / 2));
+    .force("centro", d3.forceCenter(WIDTH / 2, HEIGHT / 2))
+    .force("colision", d3.forceCollide(20)) // Tiene más poder que los demás
+    .force("carga", d3.forceManyBody().strength(20))
 
+  
   const lineas = SVG
     .append("g")
     .attr("stroke", "#999")
@@ -50,7 +55,9 @@ const iniciarSimulacion = (nodos, enlaces) => {
     // console.log({ ...enlaces[0] });
     // console.log(simulacion.alpha(), simulacion.alpha() < simulacion.alphaMin());
 
-    circulos.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
+    circulos
+      .attr("cx", (d) => d.x)
+      .attr("cy", (d) => d.y);
 
     lineas
       .attr("x1", (d) => d.source.x)
@@ -60,7 +67,7 @@ const iniciarSimulacion = (nodos, enlaces) => {
   });
 
   d3.select("#restart").on("click", () => {
-    simulacion.alpha(3).restart()
+    simulacion.alpha(1.3).restart()
   })
 
   // Hacer click en un nodo hará que este deje de actualizar

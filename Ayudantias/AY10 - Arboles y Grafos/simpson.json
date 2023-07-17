@@ -1,0 +1,86 @@
+{
+  "nodos": [
+    {
+      "name": "Homer",
+      "color": "yellow"
+    },
+    {
+      "name": "Marge",
+      "color": "blue"
+    },
+    {
+      "name": "Bart",
+      "color": "orange"
+    },
+    {
+      "name": "Lisa",
+      "color": "yellow"
+    },
+    {
+      "name": "Maggie",
+      "color": "red"
+    },
+    {
+      "name": "Abraham",
+      "color": "gray"
+    },
+    {
+      "name": "Mona",
+      "color": "gray"
+    },
+    {
+      "name": "Clancy",
+      "color": "gray"
+    },
+    {
+      "name": "Jacqueline",
+      "color": "gray"
+    }
+  ],
+  "enlaces": [
+    {
+      "source": "Homer",
+      "target": "Marge"
+    },
+    {
+      "source": "Homer",
+      "target": "Bart"
+    },
+    {
+      "source": "Homer",
+      "target": "Lisa"
+    },
+    {
+      "source": "Homer",
+      "target": "Maggie"
+    },
+    {
+      "source": "Homer",
+      "target": "Abraham"
+    },
+    {
+      "source": "Homer",
+      "target": "Mona"
+    },
+    {
+      "source": "Marge",
+      "target": "Bart"
+    },
+    {
+      "source": "Marge",
+      "target": "Lisa"
+    },
+    {
+      "source": "Marge",
+      "target": "Maggie"
+    },
+    {
+      "source": "Marge",
+      "target": "Clancy"
+    },
+    {
+      "source": "Marge",
+      "target": "Jacqueline"
+    }
+  ]
+}
